@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nowonacra</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="design/nowonacra32.png">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+    <style>
+      * {box-sizing: border-box;}
+      body {margin: 0;}
+      .fixedHeader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        height: 50px;
+        min-height: 50px;
+        max-height: 50px;
+        display: flex;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+      }
+
+      .main {
+        background-color: #eceff1;
+        width: 100%;
+        height: auto;
+        min-height: 1200px;
+      }
+
+
+
+      .main_22{
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+
+      .main_333{
+        margin: auto;
+        width: 100%;
+        padding-top: 50px;
+        max-width: 700px;
+      }
+  
+      .card {
+        box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.2);
+        background-color: white;
+        margin-top: 20px;
+        width: 100%;
+        border-radius: 15px;
+        padding: 20px;
+      }
+  
+      .finishAt img{
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .finishAt{
+        padding: 10px;
+        width: 50px;
+      }
+      .finishAt img:hover{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #eaedee;
+      }
+
+      .fixedHeader span{
+        text-align: center;
+        margin: auto;
+        font-size: 30px;
+        color: rgb(0, 115, 255);
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        cursor: pointer;
+        outline: none;
+    
+      }
+      .descM{
+        color: #455a64;
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+
+      }
+      .card p{
+        color: 	#263238;
+        font-family: 'Times New Roman', Times, serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 23px;
+          
+      }
+      .btnEmail{
+        width: 75px;
+        height: 30px;
+        border-radius: 15px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: large;
+        font-style: italic;
+        color: #2196f3;
+        background-color:#d8e1e6;
+        border-color: #d8e1e6;
+        border-style: solid;
+        cursor: pointer;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="fixedHeader">
+      <div class="finishAt">
+        <img src="design/back48.png" onclick="finihActivity();">
+      </div>
+      <span onclick="goToNOWON();">Nowonacra</span>
+      
+    </div>
+      <div class="main">
+          <div class="main_22">
+              <div class="main_333">
+                <div class="card">
+                  <span>Privacy</span>
+                </div>
+                <div class="card">
+                  <p>
+                    As an android mobile app, Nowonacra allows user to share photos and articles. Personal data are shared with free will. The information of these persons will not be used, shared or given to third parties by Nowonacra outside of the application. This data will remain in the database (Firebase-Database) and nobody will be able to access it.
+                    Our current privacy policy will be enhanced by your feedback. If you encounter any problems, inappropriate situations, you can contact us immediately and we will be dealt with.
+                    Please contact for your questions, feedback and shares.  
+                  </p>
+                  <address>
+                    Write to us <button class="btnEmail" id="btMail002" onclick="myMail00T22(this);"><span>E-mail</span></button><br> <br>
+                    Visit us at:<br>
+                    +905392051513<br>
+                    Rumelihisarı Mahallesi, 2.sokak, No : 5/1 Sarıyer / İstanbul<br>
+                    TR
+                  </address>
+                </div>
+
+                <div class="card">
+                  <p>
+                    Nowonacra android mobil uygulama olarak kullanıcının fotoğraf ve yazı paylaşma olanağı tanımaktadır. Kişisel veriler tamamen özgür iradeyle paylaşıma sunulmaktadır. Bu kişilerin bilgileri hiçbir şekilde Nowonacra tarafından uygulama dışında kullanılmayacak, paylaşılmayacak veya üçüncü şahıslara verilmeyecektir. Bu veriler veri tabanında (Firebase-Database) saklı duracak ve kimsenin erişimine açık olmayacaktır. 
+                    Şu anki gizlilik politikamız sizden gelecek olan geri bildirimlerle geliştirilecektir. Herhangi bir sorun, uygunsuz bir durumla karşılaşırsanız hemen bizimle iletişime geçebilirsiniz ve bu durumla ilgilenilecektir. 
+                    Sorularınız, geri bildirimleriniz ve paylaşımlarınız için iletişime geçiniz.
+                  </p>
+                  <address>
+                    Bize yazınız : <button class="btnEmail"  id="btMail001" onclick="myMail00N11(this);"><span >E-mail</span></button>
+                    <br>
+                    <br> 
+                    Bizi ziyaret et:<br>
+                    +905392051513<br>
+                    Rumelihisarı Mahallesi, 2.sokak, No : 5/1 Sarıyer / İstanbul<br>
+                    TR
+                  </address>
+                  
+                </div>
+                  
+              </div>
+          </div>
+      </div>
+
+      <script src="index.js"></script>
+    
+    <script>
+      function finihActivity() {window.history.back();}
+      function goToNOWON() {window.location.href = "index";}
+    </script>
+  </body>
+</html>

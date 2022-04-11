@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <title>Nowonacra</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="design/nowonacra32.png">
+    
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+        <style>
+            * {box-sizing: border-box;}
+
+            body {margin: 0;}
+
+            .fixedHeader {
+                min-width:100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: white;
+                height: 50px;
+                min-height: 50px;
+                max-height: 50px;
+                display: flex;
+                box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+    
+            }
+            .myImgName{
+                color: black;
+                font-size: large;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-weight: 500;
+                display: flex;
+                margin: auto;
+            }
+           
+            .main1 {
+                height: calc(100% - 50px); 
+                background-color: #eceff1;
+                width: 100%;
+                margin-top: 50px;
+            }
+
+            .main_22{
+                display: flex;
+                width: 100%;
+                height: 100%; 
+            }
+    
+            .main_333{
+                margin: auto;
+                width: 100%;
+                max-width: 700px;
+            }
+        
+            .card {
+                box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2);
+                background-color: white;
+                margin-top: 20px;
+                width: 100%;
+                border-radius: 10px;
+                padding: 20px;
+            }
+        
+            .finishAt img{
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+            .finishAt{
+               padding: 10px;
+                width: 50px;
+            }
+            .finishAt img:hover{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #eaedee;
+            }
+
+            .fixedHeader span{
+                text-align: center;
+                margin: auto;
+                font-size: 30px;
+                color: rgb(0, 115, 255);
+                font-family: 'Times New Roman', Times, serif;
+                font-style: italic;
+                cursor: pointer;
+                outline: none;
+          
+            }
+            .descM{
+                color: #455a64;
+                font-size: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+
+            }
+            .card p{
+                color: rgb(43, 43, 207);
+                font-family: 'Times New Roman', Times, serif;
+                font-style: italic;
+                font-weight: bolder;
+            }
+            
+           
+
+
+        </style>
+    </head>
+
+    <body>
+        <div class="fixedHeader">
+            <div class="finishAt">
+                <img src="design/back48.png" onclick="finihActivity();">
+            </div>
+            <span onclick="goToNOWON();">Nowonacra</span>
+        </div>
+
+        <main>
+            <div class="main1">
+                <div class="main_22">
+                    <div class="main_333">
+                        <div class="card">
+                            <span>About</span>
+                          </div>
+                        <div class="card">
+                            <p>Market</p>
+                            <span id="descMarket" class="descM"></span>
+                        </div>
+                        <div class="card">
+                            <p>Social</p>
+                            <span id="descSocial" class="descM"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+
+        </main>
+
+       
+        <script src="index.js"></script>
+      
+        <script>
+            function finihActivity() {
+                window.history.back();
+            }
+            var db = firebase.firestore(); 
+            var usersCollectionRef = db.collection('aboutGetInfo');    
+            var blogsHtml = "";         
+            usersCollectionRef.get().then((querySnapshot) => {        
+                querySnapshot.forEach((doc) => {                      
+                    if (doc.exists) { 
+                        document.getElementById("descMarket").innerHTML =doc.data().desc_market; 
+                        document.getElementById("descSocial").innerHTML =doc.data().desc_social; 
+                    }
+
+                });
+            });
+
+            function goToNOWON() {
+                window.location.href = "/"; 
+            }
+        </script>
+       
+
+    </body>
+</html>

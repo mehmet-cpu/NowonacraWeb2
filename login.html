@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <title>Nowonacra</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="design/nowonacra32.png">
+    
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+  
+
+        <!-- Global site tag (gtag.js) - Google Ads: 738670141 -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-738670141"></script>
+        <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-738670141');</script>
+        <!-- Facebook Pixel Code -->
+        <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '3768293913258595'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=3768293913258595&ev=PageView&noscript=1"/></noscript><!-- End Facebook Pixel Code -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152749821-1"></script>
+        <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-152749821-1');</script>
+       
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+            }
+            .fixedHeader {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: white;
+                height: 50px;
+                min-height: 50px;
+                max-height: 50px;
+                display: flex;
+                margin: auto;
+                box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+    
+            }
+           
+
+            .mainM {
+                background-color: #eceff1;
+                width: 100%;
+                height: auto;
+                min-height: 1200px;
+                margin: auto;
+               
+            }
+
+
+            .main_22{
+                
+              display: flex;
+              width: 100%;
+              height: 100%;
+             
+           
+         
+            }
+  
+            .main_333{
+              margin: auto;
+              width: 100%;
+              padding-top: 50px;
+              max-width: 500px;
+            }
+    
+           
+        
+            .card {
+                box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
+                background-color: white;
+                margin-top: 20px;
+                width: 100%;
+                border-radius: 15px;
+                padding: 15px;
+                max-width: 500px;
+               
+            }
+        
+            .finishAt img{
+                width: 48px;
+                height: 48px;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+            .finishAt{
+               padding: 1px;
+                width: 50px;
+            }
+            .finishAt img:hover{
+                
+                background-color: #78909c;
+            }
+            .fixedHeader span{
+                text-align: center;
+                margin-left: 10px;
+                font-size: 40px;
+                color: rgb(0, 0, 0);
+                margin: auto;
+                font-weight: bolder;
+            }
+            .descM{
+                color: #455a64;
+                font-size: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+
+            }
+            .card span{
+                color: #37474f;
+                font-size: 18px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-style: normal;
+                font-weight: bolder;
+               
+            }
+            .card h1{
+                color: #202d33;
+                font-family: 'Times New Roman', Times, serif;
+                font-style: normal;
+                font-weight: bolder;
+                display: flex;
+                margin: auto;
+                width: 100%;
+                text-align: center;
+               
+            }
+           
+            .container {
+                padding: 2px 6px;
+                max-width: 500px;
+                margin: auto;
+            }
+            .container h1{
+                width: 100%;
+                margin: auto;
+                text-align: start;
+                padding-left: 10px;
+             
+            }   
+          
+            .ozel{
+                display: flex;
+                margin: auto;
+                padding: 10px;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            .ozel input{
+                padding: 10px;
+            }
+            .avatar {        
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+
+            }
+            .btn_clsc{
+                padding: 10px;
+                cursor: pointer;
+            }
+            .ozel_PP{
+                color: rgba(2, 172, 2, 0.637);
+                font-size: 16px;
+                display: none;
+                padding: 10px;
+            }
+            .ozel_PP span{
+                color: rgba(2, 172, 2, 0.637);
+                font-size: 16px;
+            }
+            .ozel_sp{
+                display: none;
+                padding: 10px;
+            }
+            .ozel_sp span{
+                color: rgba(2, 90, 172, 0.637);
+                font-size: 13px;
+                padding-left: 10px;
+            }
+            .ozel span{
+                margin: auto;
+                font-size: 13px;
+                color: #455a64;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            .button {
+                padding: 10px 10px;
+                font-size: 18px;
+                text-align: center;
+                cursor: pointer;
+                outline: none;
+                color: #fff;
+                background-color: #4c93af;
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0 9px #999;
+                }
+                
+            .button:hover {background-color: #3e8e41}
+
+            .button:active {
+                background-color: #3e8e41;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+
+           
+            .container a{
+                cursor: pointer;
+            }
+            .container a:hover{
+                text-decoration: underline;
+            }
+            .ozel_5{
+                margin-left: 10px;
+            }
+
+            .ozelUp{
+                margin: auto;
+                display: flex;
+                width: 30%;
+                border-radius: 30px;
+            }
+            
+            .bttn{
+                padding: 5px 5px;
+                width: 100%;
+                cursor: pointer;
+                outline: none;
+                color: #fff;
+                background-color:#546e7a;
+                border: none;
+                border-radius: 30px;
+                box-shadow: 0 3px #999;
+            }
+            .bttn:hover{
+                background-color:#455a64;
+            }
+            .bttn:active {
+                background-color: #455a64;
+                box-shadow: 0 1px #6d7f86;
+                transform: translateY(4px);
+            }
+            .playContainer{
+                display: flex;
+                margin: 5px;
+                padding: 7px;
+                width: fit-content;
+                background-color: black;
+                color: white;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .playContainer .playConText span{
+                display: flex;
+                margin: auto;
+          
+            }
+            .playContainer .playConText span{
+                color: white;
+                font-size: small;
+                margin: auto;
+                padding-left: 10px;
+                padding-right: 10px;
+          
+            }
+            .playContainer .playConText .abcd{
+                color: white;
+                font-size: x-small;
+                margin: auto;
+                display: flex;
+                padding-left: 10px;
+                padding-right: 10px;
+          
+            }
+            .playContainer:hover{
+                background-color: rgb(29, 26, 26);
+                text-decoration: underline;
+            }
+            .businessContainer{
+                width: 100%;
+                margin: auto;
+                display: flex;
+                padding: 15px;
+                background-color: black;
+                color: white;
+                cursor: pointer;
+                border-radius: 15px;
+            }
+            .businessContainer p{
+                color: white;
+                margin: auto;
+                font-size: 20px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-style: normal;
+                font-weight: bolder;
+               
+          
+            }
+            .businessContainer:hover{
+                background-color: rgb(29, 26, 26);
+                text-decoration: underline;
+            }
+
+            .cardBusiness {
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+                background-color: rgb(0, 0, 0);
+                margin-top: 20px;
+                width: 100%;
+                border-radius: 25px;
+                display: flex;
+                max-width: 500px;
+     
+            }
+         
+
+            .shareBtn{ 
+                width: 100%;
+                margin-top: 15px;
+            }
+            .ozelREc{
+                width: 100%;
+                margin: auto;
+           
+            }
+            .input-field {
+                width: 100%;
+                margin: auto;
+                padding: 15px;
+                outline: none;
+                text-align: center;
+                border: 2px solid rgb(206, 211, 216);
+                border-radius: 10px;
+                background-color: #eceff1;
+            
+            }
+
+            .input-field:focus {
+                border: 2px solid dodgerblue;
+            }
+            .sdfg {
+                width: 100%;
+                display: flex;
+                margin: auto;
+            }
+            .sdfg .sdfger{
+                margin: auto;
+            }
+            .main_reeg {
+                margin: auto;
+                width: 100%;
+                padding-top: 50px;
+                max-width: 500px;
+            }
+            .myImgName{
+                height: auto;
+                width: 100%;
+                margin: auto;
+            }
+            .center {
+                margin: auto;
+                width: 100%;
+                
+                text-align: center;
+            }
+            .center span{
+                margin: auto;
+                color: black;
+                font-size: 30px;
+                font-family: 'Times New Roman', Times, serif;
+
+            }
+            .sideGenel{
+                width: 100%;
+                margin: auto;
+                
+               
+            }
+            .sideLeft{
+                display: flex;
+                height: 28px;
+                padding: 4px;
+                border-radius: 14px;
+                width: 100%;
+                background-color:#69f0ae;
+            }
+            .sideLeft p{
+               
+                height: 28px;
+                margin: auto;
+                color: white;
+            }
+            .sideRight{
+                display: flex;
+                height: 28px;
+                border-radius: 14px;
+                width: 100%;
+                background-color: #00c853;
+            }
+            .sideRight img{
+                margin: auto;
+                height: 24px;
+                margin: auto;
+                color: white;
+            }
+            .side_1{
+                display: none;
+                
+            }
+            .side_2{
+                display: none;
+                
+            }
+            .shareBtn{ 
+                width: 100%;
+                margin-top: 15px;
+            }
+           
+
+            .ozel{
+
+                padding: 2px;
+                margin: auto;
+                display: flex;
+                width: 50%;
+                border-radius: 30px;
+
+
+            
+            }
+            .ozelBy{
+                margin: auto;
+                display: flex;
+                width: auto;
+                border-radius: 30px;
+            
+            }
+            .texttArea{
+                padding: 2px;
+                width: 100%;
+                background-color: #cfd8dc;
+                margin: auto;
+                display: flex;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+            .texttArea .textAreaINN{
+                width: 100%;
+            }
+            .textAreaOUt{
+                height: auto;
+                width: 100%;
+                padding: 15px;
+                font-size: 20px;
+                border-radius: 10px;
+                border-color: #cfd8dc;
+                border: 2px solid rgb(206, 211, 216);
+                outline: none;
+           
+                
+            }
+            .textAreaOUt:focus {
+                border: 2px solid dodgerblue;
+            }
+           
+            .bttnRe{
+                font-size: 17px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width: auto;
+                margin: auto;
+                cursor: pointer;
+                outline: none;
+                color: #fff;
+                background-color:#546e7a;
+                border: none;
+                border-radius: 30px;
+                box-shadow: 0 2px #999;
+            }
+            .bttnRe:hover{
+                background-color:#455a64;
+            }
+            .bttnRe:active {
+                background-color: #455a64;
+                box-shadow: 0 1px #6d7f86;
+                transform: translateY(4px);
+            }
+            #verifyCardAre {
+                display: none;
+            }
+
+            .dropbtn {
+               
+               background-color: #eceff1;
+               color: rgb(0, 0, 0);
+               padding: 10px;
+               font-size: 20px;
+               border: none;
+               cursor: pointer;
+               width: 100%;
+           }
+   
+           .dropbtn:hover, .dropbtn:focus {
+               background-color: #b0bec5;
+           }
+   
+           .dropdown {
+               position: relative;
+               display: inline-block;
+               width: 100%;
+           }
+   
+           .dropdown-content {
+               display: none;
+               position: absolute;
+               background-color: white;
+               min-width: 160px;
+               overflow: auto;
+               box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+               z-index: 1;
+               width: 100%;
+               margin: auto;
+               max-height: 700px;
+           
+           }
+   
+           .dropdown-content a{
+               color: black;
+               padding: 12px 16px;
+               text-decoration: none;
+               display: block;
+               text-align: center;
+               cursor: pointer;
+           
+           }
+        
+   
+           .dropdown a:hover {background-color: #b0bec5;}
+   
+           .show {display: block;}
+   
+           #main_of_locaions {
+               display: none;
+           }
+           #main_of_register {
+               display: none;
+           }
+           #main_of_login {
+               display: block;
+           }
+           .result{
+               
+               display: flex;
+           }
+           .result p{
+               margin: auto;
+               min-width: 100%;
+               padding: 10px;
+               text-align: center;
+               font-family: Georgia, 'Times New Roman', Times, serif;
+               font-weight: bolder;
+               font-style: inherit;
+               color: 	#15ff00;
+               font-size: 25px;
+           }
+           .result_22{
+               width: 100%;
+               min-width: 100%;
+               margin: auto;
+           }
+            
+
+        </style>
+        <script>
+            var phoneNumber = "";
+            var userId;
+            var cityName;
+            var townName;
+            var countryName = "Türkiye"
+            var neighName;
+            var locationUID;
+        </script>
+        
+    </head>
+    <body>
+        <div class="fixedHeader">
+            <span>Nowonacra</span>
+        </div>
+        <div class="mainM">
+            <div class="main_22">
+                <div class="main_333" id="main_of_login">
+                    <div class="card">
+                        <div class="sdfg">
+                            <span class="sdfger">Mahallenizle daha iyi etkileşim yaşayın!</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="sdfg">
+                            <h2 class="sdfger">Telefon Girişi</h2>
+                        </div>
+                       
+                        <div  class="ozel">
+                            <span>Türkiye Format: (+90)1234567890</span>
+                        </div>
+                            
+                        <div class="ozel">
+                            <span>USA Format: (+1)1234567890</span>
+                        </div>
+                        <div class="shareBtn">
+                            <div class="ozelREc">
+                                <input type="tel" placeholder="+901234567890" id="phoneNumberInput" class="input-field">
+                            </div>
+                        </div>
+                        <div class="shareBtn">
+                            <div class="ozelREc">
+                                <div id="recaptcha-container" class="ozel"></div>
+                            </div>
+                        </div>
+                        <div class="shareBtn">
+                            <div class="ozelBy">
+                                <button class="bttnRe" id="GndrTelNom" onclick="myPhoneSend(this);">Telefon Numarasını Gönder</button>
+                            </div>
+                        </div>
+                        <div class="ozel_PP" id="pgndrld">
+                            <span>TR:Onay kodu telefonunuza gönderildi</span>
+                            <span>ENG:Confirmation code has been sent to your phone.</span>
+  
+                        </div>
+                    </div>
+
+                    <div class="card" id="verifyCardAre">
+                        <div class="ozel_sp" id="altgrnMavi">
+                            <span> TR: Kodu buraya girin. ENG: Enter code here.</span>
+                        </div>
+
+                        <div class="shareBtn">
+                            <div class="ozelREc">
+                                <input type="text" placeholder="0123456" id="KDGNDR123onay" class="input-field">
+                            </div>
+                        </div>
+                        <div class="shareBtn">
+                            <div class="ozelBy">
+                                <button class="bttnRe" id="onayKoduGndr" onclick="myVerifySend(this);">
+                                   Onay Kodunu gönder
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card">
+                        <div class="sdfg">
+                            <div class="sdfger">
+                                <div class="container">
+                                    <a id="btAbthjHix" onclick="myAboT(this);">Info</a>
+                                    <a id="btAbtIl525i" onclick="myIlettR(this);">Contact</a>          
+                                    <a id="btGSDU78zl" onclick="myGizli(this);">Privacy Policy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="sdfg">
+                            <div class="sdfger">
+                                <div class="playContainer" onclick="myGooglePlayNewTab(this);" title="Nowonacra App">
+                                    <img width="30px" height="30px" src="design/ic_launcher_play_store_new-1.png">
+                                    <div class="playConText">
+                                        <span>Google Play</span>
+                                        <span class="abcd">'den indirin</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_reeg" id="main_of_register">
+                    <div class="card">
+                        <div class="myImgName">
+                            <div class="center">
+                                <span>Hesap Oluştur</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="sideGenel">
+                            <div class="side_1" id="side_1">
+                                <div class="sideLeft">
+                                    <p>gönderiliyor...</p>
+                                 </div>
+                            </div>
+                            <div class="side_2" id="side_2">
+                                <div class="sideRight">
+                                    <img src="design/done_24.png">
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="texttArea">
+                            <input type="text" class="textAreaOUt"  id="eName"  placeholder="Kullanıcı adını yaz.." /> 
+                        </div>
+                      
+                        <div class="shareBtn">
+                            <div class="ozelBy">
+                                <button class="bttnRe" id="kayit" onclick="myFuncNameVi(this);">
+                                    Kaydet
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <p>Sizin için bir kayıt oluşturmak istiyoruz. Kullanıcı adınızı yazın. Bu kaydı istediğiniz zaman profilinizden değiştirebilirsiniz.</p>
+                    </div>
+                </div>
+
+                <div class="main_333" id="main_of_locaions">
+                    <div class="card">
+                        <div class="myImgName">
+                            <div class="center">
+                                <span>Mahalleni Seç</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="sdfg">
+                            <span class="sdfger">Size en uygun mahalleyi seçin.</span>
+                        </div>
+                    </div>
+                   
+                    
+
+                    <div class="card">
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn" id="btnCoutry">İl</button>
+                            <div id="myDdwCountry" class="dropdown-content">
+                              
+                            </div>
+                        </div>
+                      
+                        
+                        <div class="dropdown">
+                            <button onclick="myFuncCity()" class="dropbtn" id="btnCity">İlçe</button>
+                            <div id="myCityCity" class="dropdown-content">
+                              
+                            </div>
+                        </div>
+                       
+                       
+                        <div class="dropdown">
+                            <button onclick="myFuncTown()" class="dropbtn" id="btnTown">Mahalle</button>
+                            <div id="myTownTown" class="dropdown-content">
+                              
+                            </div>
+                        </div>
+                
+                      
+                       
+                    </div>
+
+                    <div class="card">
+                        <div class="result">
+                            <div class="result_22">
+                                <p id="cctn99"></p>
+                               
+                                <div class="shareBtn">
+                                    <div class="ozelBy">
+                                        <button class="bttnRe" id="svMrktNm" onclick="saveChoosenLocation(this);">
+                                            Mahalleyi kaydet
+                                         </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="sdfg">
+                            <p class="sdfger">Not: Mahalle değişikliği en az 6 ay sonra yapabilirsiniz.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+       
+
+        <script src="index.js"></script>
+        <script>
+             firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    userId = user.uid;
+                    if(userId != null){
+                        var db = firebase.firestore();
+                        var docRef = db.collection("zUser").doc(userId);
+                        docRef.get().then((doc) => {
+                            if (doc.exists) {
+                                window.location.href = "/"; 
+                            }
+
+                        });
+                    }
+                
+                }
+            });
+        </script>
+  
+       
+        <script>
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+            recaptchaVerifier.render().then((widgetId) => {window.recaptchaWidgetId = widgetId;});
+
+            function myPhoneSend() {
+
+                phoneNumber = document.getElementById("phoneNumberInput").value;
+               
+                if(phoneNumber == "") {
+                    alert("Please write the phone number");
+                }else {
+                    const appVerifier = window.recaptchaVerifier;
+                    firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                        .then((confirmationResult) => {
+                            
+                            window.confirmationResult = confirmationResult;
+                            document.getElementById("pgndrld").style.display = "block";
+                            document.getElementById("altgrnMavi").style.display = "block";
+                            document.getElementById("verifyCardAre").style.display = "block";
+                  
+                        }).catch(() => {grecaptcha.reset(window.recaptchaWidgetId);});
+
+                }
+                
+
+            }
+
+
+            function myVerifySend() {
+                var code =  document.getElementById("KDGNDR123onay").value;
+                confirmationResult.confirm(code).then(() => {
+                    checkMyInfo();
+                }).catch(() => {alert('Error');});
+            }
+
+            function myGooglePlayNewTab() {
+                window.open("https://play.google.com/store/apps/details?id=com.mk.myapp075");
+            }
+            
+        </script>
+        <script>
+            function checkMyInfo() {
+                firebase.auth().onAuthStateChanged(function(user) {
+                    if (user) { 
+                        userId = user.uid;  
+                        var userUnique = firebase.auth().currentUser;
+                        if(userUnique != null) {
+                            
+                            var db = firebase.firestore();
+                            var docRef = db.collection("zUser").doc(userId);
+                            docRef.get().then((doc) => {
+                                if (doc.exists) {
+                                    goMyHome();
+                                }else{
+                                    saveMyData(userId);
+                                }
+
+                            }).catch(() => {
+                                goMyHome();
+                                alert("Bir hata oluştu, lütfen  tekrar deneyiniz.");
+                            });
+                            
+                        }
+
+                    }
+
+                });
+            }
+
+            function saveMyData(userUid) {
+                userId = userUid;
+                document.getElementById("main_of_register").style.display = "block";
+                document.getElementById("main_of_login").style.display = "none";
+                document.getElementById("main_of_locaions").style.display = "none";
+            }
+
+            function goMyHome() {
+                db.collection("zUser").doc(userId).update({
+                    isSignOut: false,
+                    n_key: null
+                });
+                alert("userExist yes");
+            }
+
+        </script>
+           <script>
+        
+            function myFuncNameVi(){
+               
+                var nameMySelf = document.getElementById("eName").value;
+                
+                if (nameMySelf != ""){
+                    document.getElementById("side_1").style.display = "block";
+                    document.getElementById("side_2").style.display = "none";
+                    var db = firebase.firestore();
+
+                    if(userId != null) {
+                        db.collection("zStory").doc(userId).set({
+                            my_mode : null,
+                            my_mode_image : null,
+                            ch_nei_id: null,
+                            name: nameMySelf,
+                            myModeTime: firebase.firestore.Timestamp.fromDate(new Date()),
+                            img_url : null,
+                            user_id: userId,
+                            n_key: null,
+                            like_no: 0,
+                            isDelete: false
+                        });
+                    
+                     
+                        db.collection("zUser").doc(userId).set({
+                            name : nameMySelf,
+                            img_url : null,
+                            cover_url : null,
+                            user_id : userId,
+                            n_key : null,
+                            gmail : phoneNumber,
+                            timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
+                            timeUpdate: firebase.firestore.Timestamp.fromDate(new Date()),
+                            nei : "",
+                            city : "",
+                            town : "",
+                            country : "",
+                            ch_nei_id : null,
+                            isChNei: false,
+                            isNotify: false,
+                            isSignOut : false,
+                            isMsg: false,
+                            pos_no : 0,
+                            search :nameMySelf.toLowerCase(),
+                            my_mode : null,
+                            my_mode_image : null,
+                            isModeShare : false,
+                            my_mode_uid : null,
+                            myModeTime: firebase.firestore.Timestamp.fromDate(new Date()),
+                            token : null,
+                            isOnline : true,
+                            isTxtWrite : false,
+                            isInFrgMsg : false,
+                            acra_token : null
+
+
+
+                        }).then(() => {
+                            document.getElementById("side_1").style.display = "none";
+                            document.getElementById("side_2").style.display = "block";
+                            getcOUNTRYfRST(); 
+                        }).catch((error) => {
+                            alert(error);
+                            document.getElementById("side_1").style.display = "none";
+                            document.getElementById("side_2").style.display = "block";
+                        });
+
+                    }
+                            
+                    
+                }else {
+                    alert('ENG: The form is missing. TR: Form eksik.');
+                    document.getElementById("side_1").style.display = "none";
+                    document.getElementById("side_2").style.display = "none";
+                }
+
+            }
+        </script>
+
+        <script>
+                
+            function myFunction() {
+                document.getElementById("myDdwCountry").classList.toggle("show");
+            }
+            function myFuncCity() {
+                document.getElementById("myCityCity").classList.toggle("show");
+            }
+            function myFuncTown() {
+                document.getElementById("myTownTown").classList.toggle("show");
+            }
+            function myFuncNeighbor() {
+                document.getElementById("myNeiNei").classList.toggle("show");
+            }
+
+            function myFuncHistoryA() {
+                document.getElementById("niGetHistory").classList.toggle("show");
+            
+            }
+            window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+
+        
+        </script>
+
+        <script>
+             function getcOUNTRYfRST() {
+                document.getElementById("main_of_register").style.display = "none";
+                document.getElementById("main_of_login").style.display = "none";
+                document.getElementById("main_of_locaions").style.display = "block";
+                var db = firebase.firestore(); 
+                var countryColRef = db.collection('zZoneName');
+                var countryHtml = "";
+                var docRef = db.collection("zZoneName").doc("Türkiye");
+                docRef.get().then((doc) => {
+                    if (doc.exists) {
+                        const reservedItemsArray = doc.data().name;
+                        reservedItemsArray.forEach((abcde) => {
+                            countryHtml += "<a onclick=mClickCountry('"+abcde+"')>";
+                                countryHtml += abcde; 
+                            countryHtml += "</a>"; 
+                        });  
+                    } 
+                    document.getElementById("myDdwCountry").innerHTML = countryHtml;
+                });
+            }
+
+            function mClickCountry(name) {
+                document.getElementById("btnCoutry").innerHTML = name;
+                document.getElementById("cctn99").innerHTML = "";
+                cityName = name;
+                townName = null;
+                neighName = null;
+                document.getElementById("btnCity").style.color = "#ef9a9a";
+                document.getElementById("btnTown").style.color = "#ef9a9a";
+                countryUid = name;
+                var db = firebase.firestore();  
+                var cityHtml = "";
+                var docRef = db.collection("zZoneName").doc("Türkiye"+name);
+                docRef.get().then((doc) => {
+                    if (doc.exists) {
+                        const reservedItemsArray = doc.data().name;
+                        reservedItemsArray.forEach((abcde) => {
+                            cityHtml += "<a onclick = cClickCity('"+abcde+"','"+name+"')>";
+                                cityHtml += abcde;      
+                            cityHtml += "</a>";  
+                        });  
+                    } 
+                    document.getElementById("myCityCity").innerHTML = cityHtml;
+                });
+            }
+
+
+            function cClickCity(townnn,cityyy) {
+                document.getElementById("btnCity").style.color = "black";
+                document.getElementById("btnTown").style.color = "#ef9a9a";
+                document.getElementById("btnCity").innerHTML = townnn;
+                document.getElementById("cctn99").innerHTML = "";
+                neighName = null;
+                townName = townnn;
+                var db = firebase.firestore(); 
+                var townHtml = "";
+                var docRef = db.collection("zZoneName").doc("Türkiye"+cityyy+townnn);
+                docRef.get().then((doc) => {
+                    if (doc.exists) {
+                        const reservedItemsArray = doc.data().name;
+                        reservedItemsArray.forEach((abcde) => {
+                            townHtml += "<a onclick = tClickTown('"+abcde+"')>";
+                                townHtml += abcde;      
+                            townHtml += "</a>";  
+                        });   
+                    } 
+                    document.getElementById("myTownTown").innerHTML = townHtml;
+                });
+
+            }
+
+            function tClickTown(name) {
+                neighName = name;
+                locationUID = countryName+cityName+townName+neighName;
+                document.getElementById("btnTown").style.color = "black";
+                document.getElementById("btnTown").innerHTML = name;
+                document.getElementById("cctn99").innerHTML = countryName + ", " + cityName + ", " + townName;
+            
+            }
+            function saveChoosenLocation() {
+
+                if(locationUID != null && neighName != null && cityName != null && countryName != null && userId != null) {
+                    
+                    var db = firebase.firestore(); 
+                    db.collection("zUser").doc(userId).update({ 
+                        isChNei: true,
+                        city: cityName,
+                        country: countryName,
+                        ch_nei_id: locationUID,
+                        nei: neighName,
+                        town: townName
+                    }).then(() => {
+                        window.location.href = "/";
+                    }).catch((error) => {
+                        alert("ERROR !!" + error);
+                    });
+                }else {
+                    alert("Lütfen önce mahalle seçimini tamamlayın.");
+                }
+
+            }
+
+
+        </script>
+    </body>
+       
+</html>
+
+
